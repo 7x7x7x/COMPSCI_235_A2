@@ -1,0 +1,30 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <header class="w3-display-container w3-content w3-wide" style="max-width:1500px;" id="home">
+        <img class="w3-image" src="{{ url_for('static', filename='img/browse_banner.jpg') }}" alt="Movie Banner" width="1500" height=auto>
+        <div class="w3-display-right w3-margin-top w3-center w3-margin-right ">
+            <h1 class="w3-xxlarge w3-text-white"><span class="w3-padding w3-black w3-opacity-min"><b>CS</b></span> <span class="w3-hide-small w3-text-light-grey">235Flix</span></h1>
+        </div>
+    </header>
+
+    <div class="w3-container w3-padding-32" id="contact">
+        <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Search</h3>
+        {% if sr is none %}
+            <p>No results found...</p>
+        {% endif %}
+        <p>What are you looking for?</p>
+        <form action="/search" method="get" target="_blank">
+            <input class="w3-input w3-border" type="text" placeholder="Search" required="" name="search_term">
+            <select class="w3-input w3-section w3-border" name="category">
+                <option value="movie">Movie</option>
+                <option value="actor">Actor</option>
+                <option value="genre">Genre</option>
+                <option value="director">Director</option>
+                <option value="year">Year</option>
+            </select>
+            <button class="w3-button w3-black w3-section" type="submit">
+            <i class="fa fa-paper-plane"></i> Search
+            </button>
+        </form>
+    </div>
+{% endblock %}

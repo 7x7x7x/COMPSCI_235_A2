@@ -1,0 +1,64 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <header class="w3-display-container w3-content w3-wide" style="max-width:1500px;" id="home">
+        <img class="w3-image" src="{{ url_for('static', filename='img/browse_banner.jpg') }}" alt="Movie Banner" width="1500" height=auto>
+        <div class="w3-display-right w3-margin-top w3-center w3-margin-right ">
+            <h1 class="w3-xxlarge w3-text-white"><span class="w3-padding w3-black w3-opacity-min"><b>CS</b></span> <span class="w3-hide-small w3-text-light-grey">235Flix</span></h1>
+        </div>
+    </header>
+
+
+    <div class="w3-container w3-padding-32" id="projects">
+        <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">{{ featured_title }}</h3>
+    </div>
+
+
+    <div class="w3-row-padding">
+        {% for mv in mv_list[:4] %}
+            <div class="w3-col l3 m6 w3-margin-bottom">
+                <div class="w3-display-container">
+                    <div class="w3-display-topleft w3-black w3-padding">
+                        {% if mv.title == "..." %}
+                            {{ mv.title }}
+                        {% else  %}
+                            <a href="{{ url_for('browse_bp.movie_info', movie=mv.title) }}">{{ mv.title }}</a>
+                        {% endif %}
+                    </div>
+                    <img src="{{ url_for('static', filename='img/placeholder.png') }}" alt="movie" style="width:100%">
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="w3-row-padding">
+        {% for mv in mv_list[4:8] %}
+            <div class="w3-col l3 m6 w3-margin-bottom">
+                <div class="w3-display-container">
+                    <div class="w3-display-topleft w3-black w3-padding">
+                        {% if mv.title == "..." %}
+                            {{ mv.title }}
+                        {% else  %}
+                            <a href="{{ url_for('browse_bp.movie_info', movie=mv.title) }}">{{ mv.title }}</a>
+                        {% endif %}
+
+                    </div>
+                    <img src="{{ url_for('static', filename='img/placeholder.png') }}" alt="movie" style="width:100%">
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="w3-right w3-hide-small">
+        {% if type == "year" %}
+            <a href="{{ prev_year_url }}" class="w3-bar-item w3-button">Prev Year</a>
+        {% endif %}
+        <a href="{{ prev_page_url }}" class="w3-bar-item w3-button">Prev Page</a>
+        <a href="{{ next_page_url }}" class="w3-bar-item w3-button">Next Page</a>
+        {% if type == "year" %}
+            <a href="{{ next_year_url }}" class="w3-bar-item w3-button">Next Year</a>
+        {% endif %}
+    </div>
+
+
+{% endblock %}
