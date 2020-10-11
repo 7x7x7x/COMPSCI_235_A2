@@ -49,3 +49,22 @@ def test_authentication_with_invalid_credentials(in_memory_repo):
         auth_services.authenticate_user(new_username, '0987654321', in_memory_repo)
 
 
+def test_search_movie(in_memory_repo):
+    result = cont_services.search("dark knight", "movie", in_memory_repo)
+
+    assert len(result) == 2
+
+
+def test_search_actor(in_memory_repo):
+    result = cont_services.search("hayden", "actor", in_memory_repo)
+
+    assert len(result) == 2
+
+
+def test_search_genre(in_memory_repo):
+    result = cont_services.search("horror", "genre", in_memory_repo)
+
+    assert len(result) > 0
+
+
+# count search not need testing as it is the same as search but faster and shows only number of entries in repo
