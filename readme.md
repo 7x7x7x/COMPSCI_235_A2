@@ -1,3 +1,6 @@
+Name: Micahel Kang
+UPI: mkan588
+
 A flask server should be configured with the script target set to: "wsgi.py" and not "app.py"
 All dependencies used are stored in the requirements.txt file.
 The test configurations must be setup prior to running the pytests, in conftest.py the TEST_DATA_PATH and TEST_DATA_PATH2
