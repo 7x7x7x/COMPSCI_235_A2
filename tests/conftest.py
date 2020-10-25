@@ -6,9 +6,9 @@ from movie.adapters.repository_memory import *
 
 from movie.adapters.repository_memory import RepositoryMemory
 
-
-TEST_DATA_PATH = os.path.join('K:', os.sep, 'PycharmProjects', 'COMPSCI_235_A2', 'tests', 'data', 'Data1000Movies.csv')
-TEST_DATA_PATH2 = os.path.join('K:', os.sep, 'PycharmProjects', 'COMPSCI_235_A2', 'tests', 'data')
+# change the test data target to respective directories
+TEST_DATA_PATH = os.path.join('tests', 'data', 'Data1000Movies.csv')
+TEST_DATA_PATH2 = os.path.join('tests', 'data')
 
 
 @pytest.fixture
@@ -17,6 +17,7 @@ def in_memory_repo():
     mv_reader = MovieFileCSVReader(TEST_DATA_PATH)
     mv_reader.read_csv_file()
     load_users(TEST_DATA_PATH2, repo)
+    load_trailers(TEST_DATA_PATH2, repo)
 
     for mv in mv_reader.dataset_of_movies:
         repo.add_movie(mv)

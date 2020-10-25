@@ -20,6 +20,7 @@ class RepositoryMemory(RepositoryInterface):
         self.__genres = []
         self.__reviews = {}
         self.__view_count = {}
+        self.__trailer_id = {}
 
     def add_user(self, user: User):
         self.__users.append(user)
@@ -43,12 +44,13 @@ class RepositoryMemory(RepositoryInterface):
 
         return r_list
 
+    # fixed director search
     def movie_filter_director(self, director: Director):
         r_list = []
 
         if director in self.__directors:
             for mv in self.__movies:
-                if director in mv.directors:
+                if director == mv.director:
                     r_list.append(mv)
 
         return r_list
@@ -140,6 +142,16 @@ class RepositoryMemory(RepositoryInterface):
             except KeyError:
                 return r
 
+    def add_trailer(self, movie: str, yt_id: str):
+        self.__trailer_id[movie] = yt_id
+
+    def get_trailer(self, movie: str):
+        if movie in self.__trailer_id:
+            return self.__trailer_id[movie]
+        else:
+            # placeholder url
+            return "3cYBfuphkuE"
+
 
 def read_csv_file(filename: str):
     with open(filename, encoding='utf-8-sig') as infile:
@@ -166,6 +178,13 @@ def load_users(data_path: str, repo: RepositoryMemory):
         repo.add_user(user)
         users[data_row[0]] = user
     return users
+
+
+def load_trailers(data_path: str, repo: RepositoryMemory):
+    trailers = {}
+
+    for data_row in read_csv_file(os.path.join(data_path, 'trailers.csv')):
+        repo.add_trailer(data_row[0], data_row[1])
 
 
 class MovieFileCSVReader:

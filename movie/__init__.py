@@ -10,6 +10,7 @@ def create_app(test_config=None):
 
     app.config.from_object('config.Config')
 
+    # test data path
     data_path = os.path.join('movie', 'adapters', 'data', 'Data1000Movies.csv')
     data_path2 = os.path.join('movie', 'adapters', 'data')
 
@@ -24,6 +25,7 @@ def create_app(test_config=None):
     mv_reader.read_csv_file()
 
     load_users(data_path2, repo.repository_instance)
+    load_trailers(data_path2, repo.repository_instance)
 
     for mv in mv_reader.dataset_of_movies:
         repo.repository_instance.add_movie(mv)

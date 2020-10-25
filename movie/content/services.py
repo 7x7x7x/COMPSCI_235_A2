@@ -82,3 +82,9 @@ def get_views(movie: str, repo: RepositoryInterface):
 
 def add_views(movie: str, quantity: int, repo: RepositoryInterface):
     repo.add_view(movie, quantity)
+
+
+def get_trailer(movie: str, repo: RepositoryInterface):
+    yt_id = repo.get_trailer(movie)
+    yt_url = "https://www.youtube.com/embed/" + yt_id
+    return yt_url

@@ -68,3 +68,17 @@ def test_search_genre(in_memory_repo):
 
 
 # count search not need testing as it is the same as search but faster and shows only number of entries in repo
+
+def test_most_viewed(in_memory_repo):
+    in_memory_repo.add_view('testMovie', 20)
+
+    assert util_services.get_most_viewed(in_memory_repo)[0][0] == 'testMovie'
+    assert util_services.get_most_viewed(in_memory_repo)[0][1] == 20
+
+
+def test_random_movies(in_memory_repo):
+    assert len(util_services.get_random_movies(10, in_memory_repo)) == 10
+
+
+def test_construct_trailer_url(in_memory_repo):
+    assert cont_services.get_trailer("Guardians of the Galaxy", in_memory_repo) == "https://www.youtube.com/embed/d96cjJhvlMA"

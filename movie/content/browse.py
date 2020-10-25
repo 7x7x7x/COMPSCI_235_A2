@@ -244,6 +244,7 @@ def movie_info():
         review = services.get_review(q_name, repo.repository_instance)
         views = services.get_views(q_name, repo.repository_instance)
         s_query = services.search(q_name, 'movie', repo.repository_instance)
+        trailer = services.get_trailer(q_name, repo.repository_instance)
 
         if len(s_query) != 0:
             movie_desc = s_query[0].description
@@ -255,7 +256,8 @@ def movie_info():
         form=form,
         review=review,
         movie_views=views,
-        movie_desc=movie_desc
+        movie_desc=movie_desc,
+        movie_trailer_url=trailer
     )
 
 

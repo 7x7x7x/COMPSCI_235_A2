@@ -28,4 +28,4 @@ def test_movie_construction(movie):
     assert movie.title == 'test'
     assert movie.year == 2016
 
-
+# domain model has not changed since last assignment

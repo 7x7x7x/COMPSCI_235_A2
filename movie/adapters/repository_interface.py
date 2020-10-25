@@ -72,3 +72,11 @@ class RepositoryInterface(abc.ABC):
     @abc.abstractmethod
     def view_count(self, movie: str):
         raise NotImplementedError
+
+    @abc.abstractmethod
+    def add_trailer(self, movie: str, yt_id: str):
+        raise NotImplementedError
+
+    @abc.abstractmethod
+    def get_trailer(self, movie: str):
+        raise NotImplementedError
