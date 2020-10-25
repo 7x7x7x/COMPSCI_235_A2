@@ -38,6 +38,8 @@ def search(search_term: str, category: str, repo: RepositoryInterface):
     mv_list = repo.get_movie_list()
 
     r_list = []
+    if search_term is None:
+        return r_list
 
     if category == 'movie':
         for mv in mv_list:

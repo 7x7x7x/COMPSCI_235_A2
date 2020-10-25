@@ -213,14 +213,13 @@ def browse_movies_genre():
     )
 
 
+# spaghetti code alert
 @browse_blueprint.route('/movie_info', methods=['GET', 'POST'])
 def movie_info():
     try:
         username = session['username']
     except KeyError:
         username = "Anon"
-    q_name = ""
-    review = []
 
     form = CommentForm()
 
@@ -237,17 +236,34 @@ def movie_info():
     # GET
     if request.method == 'GET':
         q_name = request.args.get("movie")
-        form.movie_name.data = q_name
-        services.add_views(q_name, 1, repo.repository_instance)
-        movie_desc = "..."
+        # form.movie_name.data = q_name
+        # services.add_views(q_name, 1, repo.repository_instance)
+        # movie_desc = "..."
 
-        review = services.get_review(q_name, repo.repository_instance)
-        views = services.get_views(q_name, repo.repository_instance)
-        s_query = services.search(q_name, 'movie', repo.repository_instance)
-        trailer = services.get_trailer(q_name, repo.repository_instance)
+        # review = services.get_review(q_name, repo.repository_instance)
+        # views = services.get_views(q_name, repo.repository_instance)
+        # s_query = services.search(q_name, 'movie', repo.repository_instance)
+        # trailer = services.get_trailer(q_name, repo.repository_instance)
 
-        if len(s_query) != 0:
-            movie_desc = s_query[0].description
+        # if len(s_query) != 0:
+        #    movie_desc = s_query[0].description
+    else:
+        q_name = form.movie_name.data
+
+    # q_name = request.args.get("movie")
+
+    movie_desc = "..."
+
+    review = services.get_review(q_name, repo.repository_instance)
+    views = services.get_views(q_name, repo.repository_instance)
+    s_query = services.search(q_name, 'movie', repo.repository_instance)
+    trailer = services.get_trailer(q_name, repo.repository_instance)
+
+    if len(s_query) != 0:
+        movie_desc = s_query[0].description
+
+    form.movie_name.data = q_name
+    services.add_views(q_name, 1, repo.repository_instance)
 
     return render_template(
         'content/movie_info.html',

@@ -12,7 +12,11 @@ in pycharm to run it. Make sure the python interpreter in configurations is set 
 
 If running in a terminal window then the following command was used to run pytest:
 "venv/Scripts/python -m pytest"
-user must be in the root directory when executing this command
+
+And the following command can be used to run the flask app:
+"venv/Scripts/flask.exe run"
+
+users must be in the root directory when executing these commands
 alternatively this command can also be run within the pycharm terminal
 
 Note: A user can log in with the credentials given in the user.csv, and only logged in users are able to write reviews, as the review
@@ -21,7 +25,7 @@ will show the placeholder video.
 
 This website was constructed using the free W3.CSS framework.
 
-A full export of the project can downloaded at:
-https://mega.nz/file/7XJWiT5C#SnR2tKv1IJpSdqF5kt8sJZivEoxvDzR6KNS6760SDL8
+Alternatively this project can also be downloaded at:
+https://mega.nz/file/KOxmRYQT#26PD_MFlvh3qYSxlXmGUDUWs-1kJ9w3-LTIwgbBJodI
 
-MD5 checksum: 966302FA57DAEBFD5D6B5A04A03076FD
+md5 checksum: D0C8BE4E4FD957585F9D97A74BAC3296
