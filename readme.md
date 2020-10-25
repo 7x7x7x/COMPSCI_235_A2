@@ -20,3 +20,8 @@ box will only be shown if the user is logged in. 3 movie trailer id's have alrea
 will show the placeholder video.
 
 This website was constructed using the free W3.CSS framework.
+
+A full export of the project can downloaded at:
+https://mega.nz/file/7XJWiT5C#SnR2tKv1IJpSdqF5kt8sJZivEoxvDzR6KNS6760SDL8
+
+MD5 checksum: 966302FA57DAEBFD5D6B5A04A03076FD
